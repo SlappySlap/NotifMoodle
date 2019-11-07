@@ -1,37 +1,35 @@
-const { Client } = require("discord.js");
+const { Client } = require('discord.js');
+const { RichEmbed } = require('discord.js');
 const { config } = require("dotenv");
 
-const msg_cmd = process.argv[2];
+const msg_name = process.argv[2];
+const msg_dateAvailible = process.argv[3];
+const msg_dateEnd = process.argv[4];
+
 var channelName = "moodle"; //change le nom du chan
 
 const client = new Client({
     disableEveryone: true
 });
 
+
 config({
     path: __dirname + "/config/.env"
 });
 
-client.on("ready", () => {
-    console.log(`${client.user.username} connected!`);
+client.on('ready', () => {
+    console.log('I am ready!');
+  
+    const embed = new RichEmbed()
+        .setTitle(msg_name)
+        .setColor(0xFF0000)
+        .setDescription('Date de début : '+ msg_dateAvailible +' \nDate de fin : ' + msg_dateEnd);
 
-    client.user.setPresence({
-        status: "online",
-        game: {
-            name: "récolter des données sur moodle",
-            type: "PLAYING"
-        }
-    });
-    const channel = client.channels.find(ch => ch.name === channelName);
-    channel.send(msg_cmd);
+        const channel = client.channels.find(ch => ch.name === channelName);
+        channel.send(embed)
+        .then(() => client.destroy());
 
-    console.log("Msg send");
-    
-    client.destroy();
-
-    console.log("bye");
-});
+  });
 
 //Change ton token de bot
-client.login(process.env.TOKEN);
-
+client.login('NjQxNzM1MDk5MzA5ODgzNDEy.XcPjWg.VC00gjF9ywyc3RqoTBPYSBd3Anw');
