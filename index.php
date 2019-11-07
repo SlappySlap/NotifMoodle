@@ -54,8 +54,6 @@ foreach($nodeList as $node){
     $array[$node->getElementsByTagName('a')->item(0)->nodeValue] = $node->getElementsByTagName('a')->item(0)->getAttribute('href');
 }
 
-$message = "";
-
 foreach($array as $key => $event){
     $con = grab_page($event);
 
