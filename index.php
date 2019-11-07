@@ -75,13 +75,17 @@ foreach($array as $key => $event){
    
     
 
-    $message .= "Name : $key" . PHP_EOL;
-    $message .= "Date debut : " . $date->item(1)->nodeValue . PHP_EOL;
-    $message .= "Date fin : " . $date->item(3)->nodeValue . PHP_EOL . PHP_EOL;
+    //$message .= "Name : $key" . PHP_EOL;
+    //$message .= "Date debut : " . $date->item(1)->nodeValue . PHP_EOL;
+    //$message .= "Date fin : " . $date->item(3)->nodeValue . PHP_EOL . PHP_EOL;
 
+    $debut = $date->item(1)->nodeValue;
+    $fin = $date->item(3)->nodeValue;
     
+    shell_exec("node index.js '$key' '$debut' '$fin' ");
 }
 
-shell_exec("node index.js \"" . $message . "\"");
+//shell_exec("node index.js \"" . $message . "\"");
+
 
 ?>
