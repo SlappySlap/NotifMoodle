@@ -32,4 +32,8 @@ client.on('ready', () => {
   });
 
 //Change ton token de bot
+<<<<<<< HEAD
 client.login(process.env.TOKEN);
+=======
+client.login('NjQxNzM1MDk5MzA5ODgzNDEy.XcPjWg.VC00gjF9ywyc3RqoTBPYSBd3Anw');
+>>>>>>> master
